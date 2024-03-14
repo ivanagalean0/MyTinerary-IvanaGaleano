@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer className='bg-slate-300 p-5 text-center'>
             <div className="flex flex-col justify-evenly  max-[640px]:flex-col max-[640px]:items-center">
-                <div className="flex  max-[640px]:flex-col justify-evenly font-semibold items-center pb-3">
+                <div className="flex  max-[640px]:flex-wrap justify-evenly font-semibold items-center pb-3">
                     <a className="hover:text-blue-900 flex flex-row items-center" href="mailto:galeanoivanamagali@gmail.com"> 
                         <img className="w-10 h-10 object-cover m-3" src="/public/images/gmail-icons.png" alt="" />
                         Email
