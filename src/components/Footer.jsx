@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+
     return (
         <footer className='bg-slate-300 p-5 text-center'>
             <div className="flex flex-col justify-evenly  max-[640px]:flex-col max-[640px]:items-center">

@@ -107,7 +107,7 @@ export const Ciudades = [
       "name": "Madrid",
       "country": "Spain",
       "description": "Madrid is the capital city of Spain. It is famous for its vibrant culture, delicious cuisine, and beautiful architecture.",
-      "image": "https://cdn-ehflo.nitrocdn.com/UOvVgTOyzUrmhYwfcXfLEQcHpnXvZZvZ/assets/static/optimized/rev-8814dc6/blog/wp-content/uploads/2020/09/Historia-de-Madrid.jpg",
+      "image": "https://www.worldatlas.com/r/w1200/upload/86/6e/bc/shutterstock-143885179.jpg",
       "currency": "Euro",
       "language": "Spanish"
     },

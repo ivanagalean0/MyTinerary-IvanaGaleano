@@ -25,8 +25,6 @@ function Home() {
         currentCitiesSlice = citieSlice3;
     }
 
-
-
   return (
         <>
         <LayoutMain>
@@ -34,8 +32,8 @@ function Home() {
                 {/* CARROUSEL */}
                 <div className='flex flex-row justify-evenly p-20 py-30 bg-slate-500 '>
                     <section className='flex flex-wrap justify-center w-full p-20 items-center bg-slate-300 rounded-xl shadow-2xl shadow-black'>
-                        <h2 className='pb-10 text-4xl font-serif font-semibold text-slate-800'>POPULAR MYTINERARIES</h2>
-                        <div className='flex flex-row gap-3 w-11/12 justify-between max-[640px]:flex-col max-[640px]:items-center'>
+                        <h2 className='pb-10 text-2xl md:text-4xl font-serif font-semibold text-slate-800'>POPULAR MYTINERARIES</h2>
+                        <div className='flex flex-col gap-3 w-10/12 lg:w-11/12 items-center lg:justify-between lg:flex-row '>
                             <button onClick={anterior}>
                                 <img src="./images/flecha-izquierda.png" alt="" />
                             </button>
@@ -51,7 +49,6 @@ function Home() {
             
         </>    
     )
-
 }
 
 export default Home;

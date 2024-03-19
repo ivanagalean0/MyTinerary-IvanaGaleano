@@ -1,31 +1,36 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { getCities } from "../services/citiesAPI";
-import { useEffect, useState, useRef } from "react";
-import CardsCities from "../components/CardsCiudades";
+import { useEffect, useRef } from "react";
+import CardsCities from "../components/CardsCities";
+import { agregarCiudades, cambiarSearch, filtrarPorNombre } from "../redux/actions/citiesAction";
+import {  useDispatch, useSelector } from "react-redux"; 
+// para emitir una accion 
 
 const Cities = () => {
-   const [cities, setCities] = useState([]);
-   const [filtered, setFiltered] = useState([]);
    const busqueda = useRef(null)
 
+   const dispatchCities = useDispatch();
+
+   const dispatch = useDispatch();
+   const {allCities, citiesFilter, search} = useSelector( (store) => store.cities)
+
+//    recibo las ciudades
    useEffect(() => {
-       getCities().then( data => {
-           setCities(data);
-           setFiltered(data)
+    if (allCities.length == 0) {
+        getCities().then( data => {
+            dispatchCities(agregarCiudades(data))
+            dispatch(filtrarPorNombre(busqueda.current.value))
         })
+    }
+       
     }, [] );
 
    const handleInput = () => {
-        const filtrados = filterByCity(cities, busqueda.current.value)
-        setFiltered(filtrados);
-    }
-
-    const filterByCity = (listaCities, value) => {
-        return listaCities.filter( ( city ) => 
-            city.name.toLowerCase().startsWith(value.toLowerCase().trim())
-        );
-    };
+    // cuando se ejecute esta funcion, le tiene que mandar el nuevo search al store
+    dispatch(cambiarSearch(busqueda.current.value))
+    dispatch(filtrarPorNombre(busqueda.current.value))
+   }
 
     return (
         <div className="flex flex-col grow min-h-[100vh] bg-slate-300">
@@ -41,10 +46,11 @@ const Cities = () => {
                             placeholder="Search city:"
                             onInput={handleInput}
                             ref={busqueda}
+                            defaultValue={search}
                         />
                     </search>
-                    <div className=" grid grid-cols-2 gap-5">
-                        {filtered.length > 0 ? <CardsCities cities={filtered}/> : (<p className="p-5 underline">The city was not found.</p>)}
+                    <div className="flex flex-col w-86 md:grid md:grid-cols-2 md:gap-5 ">
+                        {citiesFilter.length > 0 ? <CardsCities cities={citiesFilter}/> : (<p className="p-5 underline">The city was not found.</p>)}
                     </div>
             </main>
             <Footer className=""></Footer>
