@@ -16,5 +16,5 @@ export const getCityById = async ( id ) => {
     } catch (error) {
         return {}
     }
-    
 }
+

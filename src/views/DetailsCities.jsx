@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getCityById } from "../services/citiesAPI";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import '../App.css'
+import { render } from "react-dom";
 
 const DetailsCities = () => {
     const cityId = useParams();
@@ -24,9 +25,6 @@ const DetailsCities = () => {
         .finally( () => setLoading(false));
     }, [])
 
-console.log(data);
-
-
     if (loading) {
         return (
             <div className="flex flex-col grow min-h-[100vh] bg-slate-300">
@@ -39,6 +37,14 @@ console.log(data);
             <Footer></Footer>
         </div>
         )
+    }
+
+    function renderPrice(price) {
+        let billetes = [];
+        for(let i = 0; i < price; i++){
+            billetes.push(<span key={i}>💵</span>)
+        }
+        return billetes;
     }
 
     return (
@@ -62,10 +68,10 @@ console.log(data);
                                             <h2>Guide: {itinerary.guide} </h2>
                                             <h2>Duration: {itinerary.duration} hs</h2>
                                             <h2 className="">Description: {itinerary.description}</h2>
+                                            <h2>Price: {renderPrice(itinerary.price)}</h2>
                                             {itinerary.hashtags.map((hashtag) => (
                                                 <Link className="font-semibold hover:underline">{hashtag}</Link>
                                             ))}
-
                                         </div>
                                     </div>
                                     <h2 className=" text-center font-bold">Activities: </h2>
